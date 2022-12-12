@@ -8,7 +8,7 @@ export const TodoList = ({ text}: TodoListProps) => {
             <p>Todo List</p>
             <p>{text}</p>
             <button>Click me</button>
-            <button data-testid="button">Click me</button>
+            <button data-testid="clickMe">Click me</button>
             <button>Click me</button>
         </div>
     )
