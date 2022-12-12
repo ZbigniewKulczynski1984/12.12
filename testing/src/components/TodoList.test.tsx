@@ -1,11 +1,12 @@
 import { render, screen } from '@testing-library/react';
 import { TodoList } from './todoList';
 
-const setup = () => render(<TodoList text="mockTest" />);
+const setup = (text: string) => render(<TodoList text={text} />);
 
 describe('TodoList.tsx', () => {
     
 	test('title is rendered', () => {
+
 		//component render
 		setup()
 
@@ -17,7 +18,7 @@ describe('TodoList.tsx', () => {
 	});
 
 	test('testProp is rendered', () => {
-		setup()
+		setup('mockTest2')
 
 		const textProp = screen.getByText('mockTest');
 
@@ -25,7 +26,7 @@ describe('TodoList.tsx', () => {
 	});
 
 	test('click me button is rendered', () => {
-		setup()
+		setup('mockTest')
 
 		const button = screen.getAllByRole('button');
 
@@ -33,7 +34,7 @@ describe('TodoList.tsx', () => {
 	});
 
 	test('clickMe button is rendered', () => {
-		setup()
+		setup('mockTest')
 
 		const clickMeButton = screen.getByTestId('clickMe');
 
