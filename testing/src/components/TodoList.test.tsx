@@ -26,8 +26,8 @@ describe('TodoList.tsx', () => {
     test('click me button is rendered', () => {
         render(<TodoList text='mocktest' />)
 
-        const button = screen.getByRole('button');
+        const button = screen.getAllByRole('button');
 
-        expect(button).toBeInTheDocument();
+        expect(button.length).toEqual(2);
     })
 })
