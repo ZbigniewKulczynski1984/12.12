@@ -1,7 +1,13 @@
-export const TodoList = () => {
+interface TodoListProps {
+    text: string
+}
+
+export const TodoList = ({ text}: TodoListProps) => {
     return (
         <div>
-            Todo List
+            <p>Todo List</p>
+            <p>{text}</p>
+            
         </div>
     )
 }
