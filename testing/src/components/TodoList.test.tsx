@@ -1,33 +1,39 @@
-import { render, screen } from "@testing-library/react"
-import { TodoList } from "./todoList"
+import { render, screen } from '@testing-library/react';
+import { TodoList } from './todoList';
 
 describe('TodoList.tsx', () => {
-    
-    test('title is rendered', () => {
+	test('title is rendered', () => {
+		//component render
+		render(<TodoList text="mocktest" />);
 
+		//logic test
+		const title = screen.getByText(/todo list/i);
 
-        render(<TodoList text='mocktest' />)
+		//test check
+		expect(title.innerHTML).toEqual('Todo List');
+	});
 
-        //logic test
-        const title = screen.getByText(/todo list/i);
+	test('testProp is rendered', () => {
+		render(<TodoList text="mockTest" />);
 
-        //test check
-        expect(title.innerHTML).toEqual('Todo List');
-    })
+		const textProp = screen.getByText('mockTest');
 
-    test('testProp is rendered', () => {
-        render(<TodoList text='mockTest' />)
+		expect(textProp.innerHTML).toEqual('mockTest');
+	});
 
-        const textProp = screen.getByText('mockTest')
+	test('click me button is rendered', () => {
+		render(<TodoList text="mocktest" />);
 
-        expect(textProp.innerHTML).toEqual('mockTest')
-    })
+		const button = screen.getAllByRole('button');
 
-    test('click me button is rendered', () => {
-        render(<TodoList text='mocktest' />)
+		expect(button.length).toEqual(3);
+	});
 
-        const button = screen.getAllByRole('button');
+	test('clickMe button is rendered', () => {
+		render(<TodoList text="mocktest" />);
 
-        expect(button.length).toEqual(2);
-    })
-})
+		const clickMeButton = screen.getByTestId('clickMe');
+
+		expect(clickMeButton).toBeInTheDocument();
+	});
+});
